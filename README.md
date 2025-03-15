@@ -1,7 +1,7 @@
 # Bilitioo-ER
 
 ## 📖 Overview
-[ descripe ]
+Welcome to Bilitioo, the ultimate platform for booking train, bus, and airplane tickets for all your internal travel needs. Whether you're planning a quick getaway, a business trip, or a long-distance journey, Bilitioo makes it easy to find and book the best travel options in just a few clicks.
 
 ## 🛠️ Technologies Used
 - **Databased:** Postgresql

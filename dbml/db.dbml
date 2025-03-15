@@ -74,6 +74,7 @@ Table ticket {
   departure_time timestamptz [not null]
   arrival_time timestamptz [not null]
   count_stand int [not null, default: 0]
+  status check_reservartion_ticket_status [not null, default: "NOT-RESERVED"]
   created_at timestamptz [not null, default: `now()`]
 
   indexes {
@@ -297,4 +298,9 @@ Enum activity_status {
 Enum notification_log_status {
   "SENT"
   "FAILED"
- }
+}
+
+ENUM check_reservartion_ticket_status {
+    "RESERVED"
+    "NOT-RESERVED"
+}

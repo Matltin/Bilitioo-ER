@@ -43,7 +43,7 @@ CHECK (phone_number ~ '^09[0-9]{9}$');
 
 ALTER TABLE "user"
 ADD CONSTRAINT email_check
-CHECK (email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$')
+CHECK (email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$');
 
 ALTER TABLE "user"
 ADD CONSTRAINT email_or_phone_required

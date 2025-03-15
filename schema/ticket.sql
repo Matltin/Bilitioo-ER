@@ -81,12 +81,12 @@ ALTER TABLE "train" ADD FOREIGN KEY ("vehicle_id") REFERENCES "vehicle" ("id");
 
 ALTER TABLE "airplane" ADD FOREIGN KEY ("vehicle_id") REFERENCES "vehicle" ("id");
 
-ALTER TABLE "ticket" ADD CONSTRAINT amount_validation CHECK (amount > 0)
+ALTER TABLE "ticket" ADD CONSTRAINT amount_validation CHECK (amount > 0);
 
-ALTER TABLE "ticket" ADD CONSTRAINT time_validation CHECK (arrival_time > departure_time)
+ALTER TABLE "ticket" ADD CONSTRAINT time_validation CHECK (arrival_time > departure_time);
 
-ALTER TABLE "ticket" ADD CONSTRAINT count_stand_validation CHECK (count_stand > 0)
+ALTER TABLE "ticket" ADD CONSTRAINT count_stand_validation CHECK (count_stand > 0);
 
-ALTER TABLE "vehicle" ADD CONSTRAINT capacity_validation CHECK (capacity > 0)
+ALTER TABLE "vehicle" ADD CONSTRAINT capacity_validation CHECK (capacity > 0);
 
-ALTER TABLE "train" ADD CONSTRAINT rank_validation CHECK (rank BETWEEN 3 AND 5)
+ALTER TABLE "train" ADD CONSTRAINT rank_validation CHECK (rank BETWEEN 3 AND 5);

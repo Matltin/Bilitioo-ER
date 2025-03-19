@@ -11,7 +11,7 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - pg_admin
+      - pg_network
 
   pgadmin:
     image: dpage/pgadmin4:latest
@@ -22,7 +22,7 @@ services:
     ports:
       - "5050:80"
     networks:
-      - pg_admin
+      - pg_network
 
 networks:
-  pg_admin:
+  pg_network:

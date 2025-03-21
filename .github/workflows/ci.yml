@@ -42,8 +42,9 @@ jobs:                                       # Can have the several jobs (paralle
 
             - name: Install migrate
               run: |
-                curl -L https://github.com/golang-migrate/migrate/releases/download/$version/migrate.$os-$arch.tar.gz | tar xvz 
-                sudo mv migrate.linux-amd64 /usr/bin/migrate
+                curl -L -o migrate.deb https://github.com/golang-migrate/migrate/releases/download/v4.18.2/migrate.linux-amd64.deb
+                sudo dpkg -i migrate.deb
+                rm migrate.deb
                 which migrate
     
             - name: Run tests

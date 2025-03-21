@@ -1,5 +1,5 @@
 address=postgresql://root:secret@localhost:5432/postgres?sslmode=disable
-path=./migration
+path=./migrations
 
 dbdocs:
 	dbdocs build dbml/db.dbml

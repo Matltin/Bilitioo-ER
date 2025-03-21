@@ -48,7 +48,7 @@ jobs:                                       # Can have the several jobs (paralle
                 which migrate
     
             - name: Run tests
-              run: go run ./...
+              run: go test ./...
     # test:
     #     name: Matrix-explanation 
     #     runs-on: obuntu-latest

@@ -4,6 +4,6 @@ CREATE TABLE "penalty" (
   "penalty_text" text NOT NULL
 );
 
-ALTER TABLE "vehicle" 
-ADD FOREIGN KEY ("id") 
-REFERENCES "penalty" ("vehicle_id");
+ALTER TABLE "penalty" 
+ADD FOREIGN KEY ("vehicle_id") 
+REFERENCES "vehicle" ("id");

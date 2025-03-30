@@ -15,6 +15,7 @@ This project uses **DBML** for database schema design. Below is the schema gener
 ### Diagram 
 you can find uml [here](https://dbdocs.io/ma1383ahmadi/Bilitioo_ER)
 
+![ERD](./doc/bilitiooAfterPainting.drawio.jpg)
 
 ---
 

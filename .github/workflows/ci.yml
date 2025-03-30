@@ -1,0 +1,66 @@
+name: ci
+
+on:
+    push:                     # Runs when code is pushed
+      branches: [main]
+    pull_request:             # Runs on pull requests
+      branches: [main]
+    # schedule:                 # Runs on a schedule 
+    #   - cron: "0 0 * * *"     # Every day at midnight UTC
+    # workflow_dispatch:        # Allows manual triggering 
+    #                           # For run in manually in the GitHub → Actions tab → Select workflow → Click "Run workflow"
+  
+env:
+  MY_ENV_VAR: "Hello World"  # This is an environment variable
+
+jobs:                                       # Can have the several jobs (paralled-sequentially)
+    build:                              
+        name: Build
+        runs-on: ubuntu-latest
+    
+        services:                     # This is used to define services that your job will depend on. In this case, a PostgreSQL database.
+          postgres:
+            image: postgres:12
+            env:
+              POSTGRES_PASSWORD: secret
+              POSTGRES_USER: root
+              POSTGRES_DB: simple_bank
+            options: >-
+              --health-cmd pg_isready
+              --health-interval 10s
+              --health-timeout 5s
+              --health-retries 5
+
+        steps:
+            - name: Checkout code           # This uses the official actions/checkout action to clone your repository into the workflow runner environment. Without it, your workflow wouldn’t have any code to work with.
+              uses: actions/checkout@v4
+            
+            - name: Set up Go
+              uses: actions/setup-go@v4     # actions/setup-go is an official action to install a specific version of Go.
+              with:                         # The with parameter specifies the Go version to install. Here, it’s set to 1.21.
+                go-version: '1.21'
+
+            - name: Install migrate
+              run: |
+                curl -L -o migrate.deb https://github.com/golang-migrate/migrate/releases/download/v4.18.2/migrate.linux-amd64.deb
+                sudo dpkg -i migrate.deb
+                rm migrate.deb
+                which migrate
+    
+            - name: Run tests
+              run: go test ./...
+    # test:
+    #     name: Matrix-explanation 
+    #     runs-on: obuntu-latest
+    #     strategy:
+    #         matrix:
+    #             go-version: [1.19, 1.20, 1.21]          # The different Go versions to test
+    #     steps:
+    #         - uses: actions/setup-go@v4
+    #           with:
+    #             go-version: ${{ matrix.go-version }}    # This sets the Go version dynamically
+    #         - run: go test ./...                        # This runs your Go tests
+    #         - name: Use a Secret
+    #           run: echo ${{ secrets.MY_ENV_VAR }}        # Access the secret
+
+              
